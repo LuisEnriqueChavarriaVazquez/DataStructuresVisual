@@ -150,9 +150,8 @@ class tabs extends HTMLElement {
 
                 input[type="text"]{
                     padding: 8px 12px;
-                    margin: 0 20px;
                     border-radius: 20px;
-                    width: 90%;
+                    width: 100%;
                     border: none;
                     background-color: rgb(202, 202, 202);
                     font-size: 1rem;
@@ -187,12 +186,15 @@ class tabs extends HTMLElement {
 
                 .containerView div{
                     background-color: #1d5f88;
-                    border: none;
-                    height: 63px;
+                    height: 70px;
+                    padding: 0 0 8px 0;
+
                     display: flex;
                     justify-content: center;
                     align-items: center;
+
                     font-size: 1.5rem;
+                    font-weight: 800;
                     transition: all .4s ease-in-out;
                 }
 
@@ -203,8 +205,6 @@ class tabs extends HTMLElement {
                 .containerView div:last-child{
                     border-radius: 0 10px 10px 0;
                 }
-
-                
             </style>
         `;
     }
@@ -281,17 +281,13 @@ document.addEventListener("DOMContentLoaded", function() {
 const contenido = {
     Arrays:`
         <h1 class="titleSection">Array view</h1>
-        <section class="containerView">
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
-            <div>5</div>
-            <div>6</div>
+        <section class="containerView" id="containerView">
+            <div id="empty" style="border-radius: 10px;">Empty</div>
         </section>
 
         <h1 class="titleSection">Options</h1>
         <section class="containerOpt">
+            <!--Push-->
             <div class="containerOpt_card">
                 <h2 class="optTitleSection">Push</h2>
                 <div class="valueOptContainer">
@@ -299,10 +295,11 @@ const contenido = {
                     <input type="text" placeholder="Type the value to push" name="valuePush" id="valuePush">
                 </div>
             </div>
+            <!--Pop-->
             <div class="containerOpt_card">
                 <h2 class="optTitleSection">Pop</h2>
                 <div class="valueOptContainerButton">
-                    <button class="buttonOpt">Execute</button>
+                    <button class="buttonOpt" id="valuePop">Execute</button>
                 </div>
             </div>
             <div class="containerOpt_card">
