@@ -33,10 +33,29 @@ class tabs extends HTMLElement {
                 <div>${this.section6}</div>
                 <div>${this.section7}</div>
             </section>
-            <section class="containerContent" id="containerContent">
-                ${contenido.Arrays}
-            </section>
-        `;
+            <section id="containerContent">
+                <section class="containerContent" style="display: grid;" id="Arrays">
+                    ${contenido.Arrays}
+                </section>
+                <section class="containerContent" style="display: none;" id="Hash_tables">
+                    ${contenido.Hash_tables}
+                </section>
+                <section class="containerContent" style="display: none;" id="Linked_list">
+                    ${contenido.Linked_list}
+                </section>
+                <section class="containerContent" style="display: none;" id="Stacks">
+                    ${contenido.Stacks}
+                </section>
+                <section class="containerContent" style="display: none;" id="Queues">
+                    ${contenido.Queues}
+                </section>
+                <section class="containerContent" style="display: none;" id="Trees">
+                    ${contenido.Trees}
+                </section>
+                <section class="containerContent" style="display: none;" id="Graphs">
+                    ${contenido.Graphs}
+                </section>
+            </section>`;
         return template;
     }
 
@@ -86,7 +105,7 @@ class tabs extends HTMLElement {
                     background-color: #0e2e42;
                     color: #fff;
 
-                    padding: 20px 100px 40px 100px;
+                    padding: 20px;
                 }
 
                 /*Contenidos de las operaciones*/
@@ -182,12 +201,18 @@ class tabs extends HTMLElement {
                     margin-bottom: 20px;
                     align-items: center;
                     height: 100px;
+                    background: #fff;
+                    border-radius: 20px;
+                    padding: 10px;
                 }
 
                 .containerView div{
                     background-color: #1d5f88;
                     height: 70px;
                     padding: 0 0 8px 0;
+                    margin: 5px;
+
+                    border-radius: 10px;
 
                     display: flex;
                     justify-content: center;
@@ -253,10 +278,21 @@ function clickTabActive(divs){
  */
 
 function actualizarContenido(container, divClicked){
+    //Obtenemos el contenido del objeto
     let nombreTab = divClicked.outerText.replace(' ', '_');
-    let contenidoObjt = contenido[nombreTab];
-    container.innerHTML = contenidoObjt;
+    console.log('nombreTab: ', nombreTab);
+    
+    //Accedemos a los hijos del contenedor para desaparecer todos los subcontenedores
+    let subContenedores = container.children;
+    let subContenedores_arr = [...subContenedores];
+    subContenedores_arr.forEach(element => {
+        element.setAttribute('style', 'display: none;')
+    });
 
+    //Hacemos visible el contenedor elegido
+    const myTab = document.querySelector("my-tab");
+    let contenedorElegido = myTab.shadowRoot.getElementById(nombreTab);
+    contenedorElegido.setAttribute('style', 'display: grid;');
 }
 
 //Para que pueda acceder a los elementos una vez que ha cargado la pagina
