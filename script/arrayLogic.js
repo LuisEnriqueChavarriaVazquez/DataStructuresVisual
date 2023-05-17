@@ -130,3 +130,30 @@ function concatElement(inputValueArray, hijosArray){
     //Metemos los elementos
     containerView.innerHTML = sumaFinal;
 }
+
+//reverse
+let valueReverseButton = myTab.shadowRoot.getElementById('valueReverse');
+valueReverseButton.addEventListener('click', () => {
+
+    //Obtenemos los elemntos hijos
+    let hijosArray = containerView.children;
+    hijosArray = [...hijosArray];
+    
+    //Sumamos el contenido de los arrays
+    let sumaElementos = [];
+    hijosArray.forEach((e) => {
+        sumaElementos.push(e.outerHTML);
+    });
+
+    //Invertimos el array
+    let arrayInvertido = sumaElementos.reverse();
+
+    //Sumamos el nuevo contenido de los arrays
+    let sumaFinal = arrayInvertido.reduce((prev, next) => {
+        return prev + next;
+    });
+    
+    //Agregamos el contenido
+    containerView.innerHTML = sumaFinal;
+    
+});

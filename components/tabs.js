@@ -318,7 +318,7 @@ const contenido = {
             <div class="containerOpt_card">
                 <h2 class="optTitleSection">Reverse</h2>
                 <div class="valueOptContainerButton">
-                    <button class="buttonOpt">Execute</button>
+                    <button class="buttonOpt" id="valueReverse">Execute</button>
                 </div>
             </div>
             <div class="containerOpt_card">
