@@ -31,8 +31,8 @@ class tabs extends HTMLElement {
                 <div>${this.section6}</div>
                 <div>${this.section7}</div>
             </section>
-            <section class="containerContent">
-                ddssdds
+            <section class="containerContent" id="containerContent">
+                ${contenido.Arrays}
             </section>
             <!--llamamos a los estilos-->
             ${this.getStyles()}
@@ -52,7 +52,7 @@ class tabs extends HTMLElement {
                     justify-content: center;
                     height: 64px;
                     color: #fff;
-                    background-color: hsl(0, 0%, 21%);
+                    background-color: #06283D;
                 }
 
                 :host .tabs div{
@@ -65,13 +65,21 @@ class tabs extends HTMLElement {
                 }
 
                 :host .tabs .activeTab{
-                    border-bottom: solid #3b96ff 5px;
+                    border-bottom: solid #fff 3px;
+                    font-weight: 700;
+                    font-size: 1.1rem;
+                    transition: all .1s ease-out;
                 }
 
                 :host .containerContent{
                     display: flex;
                     min-height: calc(100vh - 64px);
-                    background-color: hsl(0, 0%, 29%);
+                    max-height: auto;
+
+                    background-color: #0e2e42;
+                    color: #fff;
+
+                    padding: 20px;
                 }
             </style>
         `;
@@ -98,14 +106,21 @@ customElements.define("my-tab", tabs);
  * Lo primero es que accedemos al elemento del tab menu
  */
 function tabsActivate(){
+
+    //Accedemos a los divs del menu tab
     const myTab = document.querySelector("my-tab");
     const componentTab = myTab.shadowRoot.getElementById("componentTab");
     const divsTab = componentTab.querySelectorAll('div');
+
+    //Accedemos al contenido en cada una de las tabSize: 
+    let containerContent = myTab.shadowRoot.getElementById('containerContent');
+
     //Llamamos a la función para cuando damos click en un tab actualizar el contenido
     componentTab.addEventListener('click', (event) =>{
         clickTabActive(divsTab);
         event.target.classList.add('activeTab');
-    })
+        actualizarContenido(containerContent, event.target);
+    });
 }
 
 /*
@@ -117,8 +132,49 @@ function clickTabActive(divs){
     });
 }
 
+/**
+ * Actualizamos el contenido
+ */
+
+function actualizarContenido(container, divClicked){
+    let nombreTab = divClicked.outerText.replace(' ', '_');
+    let contenidoObjt = contenido[nombreTab];
+    container.innerHTML = contenidoObjt;
+
+}
+
 //Para que pueda acceder a los elementos una vez que ha cargado la pagina
 document.addEventListener("DOMContentLoaded", function() {
     tabsActivate();
 });
+
+/**
+ * Contenidos de las tabs
+ * Aqui lo que haremos será inyectar los componentes dentro del contenedor
+ * Dichos componentes estan dentro de un objeto
+ */
+
+const contenido = {
+    Arrays:`
+        <p>Primera parte</p>
+    `,
+    Hash_tables:`
+        <p>Segunda parte</p>
+    `,
+    Linked_list:`
+        <p>Segunda parte</p>
+    `,
+    Stacks:`
+        <p>Segunda parte</p>
+    `,
+    Queues:`
+        <p>Segunda parte</p>
+    `,
+    Trees:`
+        <p>Segunda parte</p>
+    `,
+    Graphs:`
+        <p>Segunda parte</p>
+    `,
+}
   
