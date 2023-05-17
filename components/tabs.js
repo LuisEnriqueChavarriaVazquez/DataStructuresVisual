@@ -222,6 +222,40 @@ class tabs extends HTMLElement {
                     font-weight: 800;
                     transition: all .4s ease-in-out;
                 }
+
+                .tableContent{
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-rows: 50px;
+                    min-height: 200px;
+                    height: auto;
+                    width: 100%;
+                    background-color: #fff;
+                    color: #041d2c;
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    border-radius: 20px;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 20px;
+                    margin-bottom: 20px;
+                }
+
+                .tableContent .clave{
+                    background-color: #c5c5c5;
+                    border: rgb(136, 136, 136) 2px solid;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .tableContent .valor{
+                    background-color: #eeeeee;
+                    border: rgb(136, 136, 136) 2px solid;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
             </style>
         `;
     }
@@ -368,6 +402,63 @@ const contenido = {
     `,
     Hash_tables:`
         <h1 class="titleSection">Hash tables</h1>
+        <section class="tableContent">
+            <div class="clave">Clave</div>
+            <div class="valor">Valor</div>
+        </section>
+        <h1 class="titleSection">Options</h1>
+        <section class="containerOpt">
+            <!--Push-->
+            <div class="containerOpt_card">
+                <h2 class="optTitleSection">Push</h2>
+                <div class="valueOptContainer">
+                    <label for="valuePush">Value</label>
+                    <input type="text" placeholder="Type the value to push" name="valuePush" id="valuePush">
+                </div>
+            </div>
+            <!--Pop-->
+            <div class="containerOpt_card">
+                <h2 class="optTitleSection">Pop</h2>
+                <div class="valueOptContainerButton">
+                    <button class="buttonOpt" id="valuePop">Execute</button>
+                </div>
+            </div>
+            <!--Shift-->
+            <div class="containerOpt_card">
+                <h2 class="optTitleSection">Unshift</h2>
+                <div class="valueOptContainer">
+                    <label for="valueShift">Value</label>
+                    <input type="text" placeholder="Type the value to shift" name="valueUnshift" id="valueUnshift">
+                </div>
+            </div>
+            <!--Unshift-->
+            <div class="containerOpt_card">
+                <h2 class="optTitleSection">Shift</h2>
+                <div class="valueOptContainerButton">
+                    <button class="buttonOpt" id="valueShift">Execute</button>
+                </div>
+            </div>
+            <div class="containerOpt_card">
+                <h2 class="optTitleSection">Concat</h2>
+                <div class="valueOptContainer">
+                    <label for="valueConcat">Array</label>
+                    <input type="text" placeholder="Type the array like this... 1,2,3,4" name="valueConcat" id="valueConcat">
+                </div>
+            </div>
+            <div class="containerOpt_card">
+                <h2 class="optTitleSection">Reverse</h2>
+                <div class="valueOptContainerButton">
+                    <button class="buttonOpt" id="valueReverse">Execute</button>
+                </div>
+            </div>
+            <div class="containerOpt_card">
+                <h2 class="optTitleSection">Filter</h2>
+                <div class="valueOptContainer">
+                    <label for="valueFilter">Value</label>
+                    <input type="text" placeholder="Type the value to filter" name="valueFilter" id="valueFilter">
+                </div>
+            </div>
+        </section>
         
     `,
     Linked_list:`
