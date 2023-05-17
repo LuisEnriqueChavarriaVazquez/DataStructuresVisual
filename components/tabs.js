@@ -367,22 +367,28 @@ const contenido = {
         </section>
     `,
     Hash_tables:`
-        <p>Segunda parte</p>
+        <h1 class="titleSection">Hash tables</h1>
+        
     `,
     Linked_list:`
-        <p>Segunda parte</p>
+        <h1 class="titleSection">Linked list</h1>
+
     `,
     Stacks:`
-        <p>Segunda parte</p>
+        <h1 class="titleSection">Stacks</h1>
+
     `,
     Queues:`
-        <p>Segunda parte</p>
+        <h1 class="titleSection">Queues</h1>
+
     `,
     Trees:`
-        <p>Segunda parte</p>
+        <h1 class="titleSection">Trees</h1>
+
     `,
     Graphs:`
-        <p>Segunda parte</p>
+        <h1 class="titleSection">Graphs</h1>
+
     `,
 }
   
