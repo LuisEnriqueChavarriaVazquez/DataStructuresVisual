@@ -197,14 +197,6 @@ class tabs extends HTMLElement {
                     font-weight: 800;
                     transition: all .4s ease-in-out;
                 }
-
-                .containerView div:first-child{
-                    border-radius: 10px 0 0 10px;
-                }
-
-                .containerView div:last-child{
-                    border-radius: 0 10px 10px 0;
-                }
             </style>
         `;
     }
@@ -282,7 +274,6 @@ const contenido = {
     Arrays:`
         <h1 class="titleSection">Array view</h1>
         <section class="containerView" id="containerView">
-            <div id="empty" style="border-radius: 10px;">Empty</div>
         </section>
 
         <h1 class="titleSection">Options</h1>
@@ -302,15 +293,16 @@ const contenido = {
                     <button class="buttonOpt" id="valuePop">Execute</button>
                 </div>
             </div>
+            <!--Shift-->
             <div class="containerOpt_card">
-                <h2 class="optTitleSection">Shift</h2>
+                <h2 class="optTitleSection">Unshift</h2>
                 <div class="valueOptContainer">
                     <label for="valueShift">Value</label>
                     <input type="text" placeholder="Type the value to shift" name="valueShift" id="valueShift">
                 </div>
             </div>
             <div class="containerOpt_card">
-                <h2 class="optTitleSection">Unshift</h2>
+                <h2 class="optTitleSection">Shift</h2>
                 <div class="valueOptContainerButton">
                     <button class="buttonOpt">Execute</button>
                 </div>
