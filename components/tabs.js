@@ -298,13 +298,14 @@ const contenido = {
                 <h2 class="optTitleSection">Unshift</h2>
                 <div class="valueOptContainer">
                     <label for="valueShift">Value</label>
-                    <input type="text" placeholder="Type the value to shift" name="valueShift" id="valueShift">
+                    <input type="text" placeholder="Type the value to shift" name="valueUnshift" id="valueUnshift">
                 </div>
             </div>
+            <!--Unshift-->
             <div class="containerOpt_card">
                 <h2 class="optTitleSection">Shift</h2>
                 <div class="valueOptContainerButton">
-                    <button class="buttonOpt">Execute</button>
+                    <button class="buttonOpt" id="valueShift">Execute</button>
                 </div>
             </div>
             <div class="containerOpt_card">

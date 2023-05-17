@@ -40,9 +40,9 @@ valuePopButton.addEventListener('click', () => {
     
 });
 
-//Shift
-let valueShiftInput = myTab.shadowRoot.getElementById('valueShift');
-valueShiftInput.addEventListener('keydown', function(event) {
+//Unshift
+let valueUnshiftInput = myTab.shadowRoot.getElementById('valueUnshift');
+valueUnshiftInput.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
         event.preventDefault();
 
@@ -61,7 +61,6 @@ function shiftElement(valuePush, hijosArray){
         sumaElementos.push(e.outerHTML);
     });
     sumaElementos.unshift("<div>" + valuePush + "</div>");
-    console.log('sumaElementos: ', sumaElementos);
 
     let sumaFinal;
     if(sumaElementos.length > 0){
@@ -71,3 +70,24 @@ function shiftElement(valuePush, hijosArray){
         containerView.innerHTML = sumaFinal;
     }
 }
+
+//shift
+let valueShiftButton = myTab.shadowRoot.getElementById('valueShift');
+valueShiftButton.addEventListener('click', () => {
+    let hijosArray = containerView.children;
+    hijosArray = [...hijosArray];
+    hijosArray.shift();
+
+    let sumaElementos = [];
+    hijosArray.forEach((e) => {
+        sumaElementos.push(e.outerHTML);
+    });
+
+    let sumaFinal;
+    if(sumaElementos.length >= 0){
+        sumaFinal = sumaElementos.reduce((prev, next) => {
+            return prev + next;
+        })
+        containerView.innerHTML = sumaFinal;
+    }
+});
