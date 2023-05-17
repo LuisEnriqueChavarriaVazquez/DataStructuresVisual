@@ -311,7 +311,7 @@ const contenido = {
             <div class="containerOpt_card">
                 <h2 class="optTitleSection">Concat</h2>
                 <div class="valueOptContainer">
-                    <label for="valueConcat">New Array</label>
+                    <label for="valueConcat">Array</label>
                     <input type="text" placeholder="Type the array like this... 1,2,3,4" name="valueConcat" id="valueConcat">
                 </div>
             </div>

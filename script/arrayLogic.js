@@ -91,3 +91,42 @@ valueShiftButton.addEventListener('click', () => {
         containerView.innerHTML = sumaFinal;
     }
 });
+
+//concat
+let valueConcatInput = myTab.shadowRoot.getElementById('valueConcat');
+valueConcatInput.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+
+        if(event.target.value != null){
+            let hijosArray = containerView.children;
+            concatElement(event.target.value, hijosArray);
+        }
+    }
+});
+
+function concatElement(inputValueArray, hijosArray){
+    //Obtenemos los elementos del usuarios
+    let newArray = inputValueArray.split(',');
+    //Modifcamos el array para meterle divs a lo que nos paso el usuario
+    let modifiedArray = newArray.map((element) => {
+        return "<div>" + element + "</div>"
+    });
+
+    //Convertirmos en array los elementos que ya tenemos
+    let hijosArrayAntiguos = [...hijosArray];
+    let hijosArrayAntiguosOuter = hijosArrayAntiguos.map((element) => {
+        return element.outerHTML;
+    });
+
+    //Concatenamos los elementos
+    let concatenacionFinal = hijosArrayAntiguosOuter.concat(modifiedArray);
+
+    //Juntamos todos los elementos en un string
+    let sumaFinal = concatenacionFinal.reduce((prev, next) => {
+        return prev + next;
+    });
+
+    //Metemos los elementos
+    containerView.innerHTML = sumaFinal;
+}
