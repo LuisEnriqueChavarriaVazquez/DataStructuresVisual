@@ -22,6 +22,8 @@ class tabs extends HTMLElement {
     getTemplate(){
         const template = document.createElement('template');
         template.innerHTML = `
+            <!--llamamos a los estilos-->
+            ${this.getStyles()}
             <section class="tabs" id="componentTab">
                 <div class="activeTab">${this.section1}</div>
                 <div>${this.section2}</div>
@@ -34,8 +36,6 @@ class tabs extends HTMLElement {
             <section class="containerContent" id="containerContent">
                 ${contenido.Arrays}
             </section>
-            <!--llamamos a los estilos-->
-            ${this.getStyles()}
         `;
         return template;
     }
@@ -44,6 +44,12 @@ class tabs extends HTMLElement {
     getStyles(){
         return `
             <style>
+                :host *{
+                    box-sizing: border-box;
+                    margin: 0;
+                    padding: 0;
+                }
+
                 :host .tabs{
                     display: grid;
                     grid-template-columns: repeat(7,1fr);
@@ -52,7 +58,7 @@ class tabs extends HTMLElement {
                     justify-content: center;
                     height: 64px;
                     color: #fff;
-                    background-color: #06283D;
+                    background-color: #041d2c;
                 }
 
                 :host .tabs div{
@@ -73,6 +79,7 @@ class tabs extends HTMLElement {
 
                 :host .containerContent{
                     display: flex;
+                    flex-direction: column;
                     min-height: calc(100vh - 64px);
                     max-height: auto;
 
@@ -81,6 +88,92 @@ class tabs extends HTMLElement {
 
                     padding: 20px;
                 }
+
+                /*Contenidos de las operaciones*/
+
+                .titleSection{
+                    font-size: 2rem;
+                    margin-bottom: 20px;
+                }
+
+                .optTitleSection{
+                    font-size: 1.5rem;
+                    margin: 0 0 10px 0;
+                    height: 40px;
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                }
+
+                .containerOpt{
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    grid-template-rows: auto;
+                    gap: 20px;
+
+                    width: 100%;
+                    height: auto;
+                }
+
+                .containerOpt_card{
+                    width: 100%;
+                    height: auto;
+                    padding: 8px 20px 15px 20px;
+                    border-radius: 20px;
+
+                    background-color: #fff;
+                    color: #0e2e42;
+                }
+
+                .containerOpt_card:last-child {
+                    grid-column: span 2;
+                }
+
+                .valueOptContainer{
+                    display: grid;
+                    grid-template-columns: 1fr 9fr;
+                    grid-template-rows: auto;
+                    justify-content: center; align-items: center;
+                    width: 100%;
+                }
+
+                .valueOptContainerButton{
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    grid-template-rows: auto;
+                    width: 100%;
+                }
+
+                label{
+                    font-size: 1.1rem;
+                }
+
+                input[type="text"]{
+                    padding: 8px 12px;
+                    margin: 0 20px;
+                    border-radius: 20px;
+                    width: 90%;
+                    border: none;
+                    background-color: rgb(202, 202, 202);
+                    font-size: 1rem;
+                }
+
+                .buttonOpt{
+                    background-color: #06283D;
+                    color: #fff;
+                    border-radius: 20px;
+                    padding: 10px 20px;
+                    border: none;
+                    font-size: 1.1rem;
+                    width: 100%;
+                    transition: all .1s ease-in-out;
+                    cursor: pointer;
+                }
+
+                .buttonOpt:hover{
+                    background-color: #1d5f88;
+                }
+                
             </style>
         `;
     }
@@ -156,7 +249,58 @@ document.addEventListener("DOMContentLoaded", function() {
 
 const contenido = {
     Arrays:`
-        <p>Primera parte</p>
+        <h1 class="titleSection">Array view</h1>
+
+        <hr>
+        <h1 class="titleSection">Options</h1>
+        <section class="containerOpt">
+            <div class="containerOpt_card">
+                <h2 class="optTitleSection">Push</h2>
+                <div class="valueOptContainer">
+                    <label for="valuePush">Value</label>
+                    <input type="text" placeholder="Type the value to push" name="valuePush" id="valuePush">
+                </div>
+            </div>
+            <div class="containerOpt_card">
+                <h2 class="optTitleSection">Pop</h2>
+                <div class="valueOptContainerButton">
+                    <button class="buttonOpt">Execute</button>
+                </div>
+            </div>
+            <div class="containerOpt_card">
+                <h2 class="optTitleSection">Shift</h2>
+                <div class="valueOptContainer">
+                    <label for="valueShift">Value</label>
+                    <input type="text" placeholder="Type the value to shift" name="valueShift" id="valueShift">
+                </div>
+            </div>
+            <div class="containerOpt_card">
+                <h2 class="optTitleSection">Unshift</h2>
+                <div class="valueOptContainerButton">
+                    <button class="buttonOpt">Execute</button>
+                </div>
+            </div>
+            <div class="containerOpt_card">
+                <h2 class="optTitleSection">Concat</h2>
+                <div class="valueOptContainer">
+                    <label for="valueConcat">New Array</label>
+                    <input type="text" placeholder="Type the array like this... 1,2,3,4" name="valueConcat" id="valueConcat">
+                </div>
+            </div>
+            <div class="containerOpt_card">
+                <h2 class="optTitleSection">Reverse</h2>
+                <div class="valueOptContainerButton">
+                    <button class="buttonOpt">Execute</button>
+                </div>
+            </div>
+            <div class="containerOpt_card">
+                <h2 class="optTitleSection">Filter</h2>
+                <div class="valueOptContainer">
+                    <label for="valueFilter">Value to filter</label>
+                    <input type="text" placeholder="Type the value to filter" name="valueFilter" id="valueFilter">
+                </div>
+            </div>
+        </section>
     `,
     Hash_tables:`
         <p>Segunda parte</p>
