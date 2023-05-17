@@ -173,6 +173,37 @@ class tabs extends HTMLElement {
                 .buttonOpt:hover{
                     background-color: #1d5f88;
                 }
+
+                /*Container array*/
+                .containerView{
+                    display: grid;
+                    grid-auto-flow: column;
+                    grid-template-columns: repeat(auto-fill, 1fr);
+                    grid-template-rows: auto;
+                    margin-bottom: 20px;
+                    align-items: center;
+                    height: 100px;
+                }
+
+                .containerView div{
+                    background-color: #1d5f88;
+                    border: none;
+                    height: 63px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 1.5rem;
+                    transition: all .4s ease-in-out;
+                }
+
+                .containerView div:first-child{
+                    border-radius: 10px 0 0 10px;
+                }
+
+                .containerView div:last-child{
+                    border-radius: 0 10px 10px 0;
+                }
+
                 
             </style>
         `;
@@ -250,8 +281,15 @@ document.addEventListener("DOMContentLoaded", function() {
 const contenido = {
     Arrays:`
         <h1 class="titleSection">Array view</h1>
+        <section class="containerView">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+        </section>
 
-        <hr>
         <h1 class="titleSection">Options</h1>
         <section class="containerOpt">
             <div class="containerOpt_card">
