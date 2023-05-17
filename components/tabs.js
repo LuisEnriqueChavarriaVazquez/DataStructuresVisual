@@ -86,7 +86,7 @@ class tabs extends HTMLElement {
                     background-color: #0e2e42;
                     color: #fff;
 
-                    padding: 20px;
+                    padding: 20px 100px 40px 100px;
                 }
 
                 /*Contenidos de las operaciones*/
@@ -324,7 +324,7 @@ const contenido = {
             <div class="containerOpt_card">
                 <h2 class="optTitleSection">Filter</h2>
                 <div class="valueOptContainer">
-                    <label for="valueFilter">Value to filter</label>
+                    <label for="valueFilter">Value</label>
                     <input type="text" placeholder="Type the value to filter" name="valueFilter" id="valueFilter">
                 </div>
             </div>

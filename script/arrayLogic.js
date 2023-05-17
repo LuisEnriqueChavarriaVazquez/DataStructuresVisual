@@ -157,3 +157,47 @@ valueReverseButton.addEventListener('click', () => {
     containerView.innerHTML = sumaFinal;
     
 });
+
+//filter
+let valueFilterInput = myTab.shadowRoot.getElementById('valueFilter');
+valueFilterInput.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+
+        if(event.target.value != null){
+            let hijosArray = containerView.children;
+            filterElement(event.target.value, hijosArray);
+        }
+    }
+});
+
+function filterElement(valueToFilter, hijosArray){
+
+    //Convetimos los valores en array
+    let hijosArray_arr = [...hijosArray];
+    
+    //Regresamos solamente el numero de los divs
+    let valoresInternos = hijosArray_arr.map((e) => {
+        return e.innerHTML;
+    })
+
+    //Filtramos el valor
+    let arrayFiltrado = valoresInternos.filter((e) => {
+        if(e != valueToFilter){
+            return e;
+        }
+    });
+
+    //Agregamos el div a los elementos
+    let arrayConDivs = arrayFiltrado.map((e) => {
+        return "<div>" + e + "</div>";
+    });
+
+    //Sumamos los elementos en uan cadena de texto
+    let sumaFinal = arrayConDivs.reduce((prev, next) => {
+        return prev + next;
+    })
+
+    //Metemos los elementos
+    containerView.innerHTML = sumaFinal;
+}
