@@ -174,6 +174,7 @@ class tabs extends HTMLElement {
                     border: none;
                     background-color: rgb(202, 202, 202);
                     font-size: 1rem;
+                    margin-bottom: 12px;
                 }
 
                 .buttonOpt{
@@ -225,9 +226,9 @@ class tabs extends HTMLElement {
 
                 .tableContent{
                     display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    grid-template-rows: 50px;
-                    min-height: 200px;
+                    grid-template-columns: 1fr;
+                    grid-template-rows: auto;
+                    gap: 0;
                     height: auto;
                     width: 100%;
                     background-color: #fff;
@@ -241,20 +242,64 @@ class tabs extends HTMLElement {
                     margin-bottom: 20px;
                 }
 
-                .tableContent .clave{
+                .tableContentHead{
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-rows: 50px;
+                    height: auto;
+                    width: 100%;
+                    color: #041d2c;
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                }
+
+                .tableContentHead:first-child{
+                    position: relative;
+                    top: 4px;
+                }
+
+                .tableContentHead:first-child .clave{
+                    background-color: #464646;
+                    border: #464646 2px solid;
+                    color: #fff;
+                    border-radius: 20px 0 0 0;
+                }
+
+                .tableContentHead:first-child .valor{
+                    background-color: #464646;
+                    border: #464646 2px solid;
+                    color: #fff;
+                    border-radius: 0 20px 0 0;
+                }
+
+                .tableContentHead .clave{
                     background-color: #c5c5c5;
-                    border: rgb(136, 136, 136) 2px solid;
+                    border: #464646 2px solid;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                 }
 
-                .tableContent .valor{
+                .tableContentHead .valor{
                     background-color: #eeeeee;
-                    border: rgb(136, 136, 136) 2px solid;
+                    border: #464646 2px solid;
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                }
+
+                /*Consola*/
+                .console{
+                    border-radius: 20px;
+                    font-family: Consolas;
+                    background-color: #222222;
+                    color: #00ccff;
+                    min-height: 200px;
+                    height: auto;
+                    width: 100%;
+                    padding: 20px;
+                    margin-bottom: 20px;
+                    box-sizing: border-box;
                 }
             </style>
         `;
@@ -403,59 +448,94 @@ const contenido = {
     Hash_tables:`
         <h1 class="titleSection">Hash tables</h1>
         <section class="tableContent">
-            <div class="clave">Clave</div>
-            <div class="valor">Valor</div>
+            <div class="tableContentHead">
+                <div class="clave">Key</div>
+                <div class="valor">Value</div>
+            </div>
+            <div class="tableContentHead" id="valoresTableContentHead">
+                
+            </div>
         </section>
+
+        <h1 class="titleSection">Console</h1>
+        <section class="console">   
+            <p id="consoleText">
+                
+            </p>
+        </section>
+
         <h1 class="titleSection">Options</h1>
         <section class="containerOpt">
-            <!--Push-->
+            <!--Set-->
             <div class="containerOpt_card">
-                <h2 class="optTitleSection">Push</h2>
+                <h2 class="optTitleSection">Set</h2>
                 <div class="valueOptContainer">
-                    <label for="valuePush">Value</label>
-                    <input type="text" placeholder="Type the value to push" name="valuePush" id="valuePush">
+                    <label for="valueHashSet">Value</label>
+                    <input type="text" placeholder="Type the value to set" name="valueHashSet" id="valueHashSet">
+                    <label for="keyHashSet">Key</label>
+                    <input type="text" placeholder="Type the key to push" name="keyHashSet" id="keyHashSet">
+                </div>
+                <div class="valueOptContainerButton">
+                    <button class="buttonOpt" id="setHashButton">Set</button>
                 </div>
             </div>
-            <!--Pop-->
+            <!--Get-->
             <div class="containerOpt_card">
-                <h2 class="optTitleSection">Pop</h2>
+                <h2 class="optTitleSection">Get</h2>
+                <br><br><br><br>
                 <div class="valueOptContainerButton">
                     <button class="buttonOpt" id="valuePop">Execute</button>
                 </div>
             </div>
-            <!--Shift-->
+            <!--Has-->
             <div class="containerOpt_card">
-                <h2 class="optTitleSection">Unshift</h2>
+                <h2 class="optTitleSection">Has</h2>
                 <div class="valueOptContainer">
                     <label for="valueShift">Value</label>
                     <input type="text" placeholder="Type the value to shift" name="valueUnshift" id="valueUnshift">
                 </div>
             </div>
-            <!--Unshift-->
+            <!--Delete-->
             <div class="containerOpt_card">
-                <h2 class="optTitleSection">Shift</h2>
-                <div class="valueOptContainerButton">
-                    <button class="buttonOpt" id="valueShift">Execute</button>
-                </div>
-            </div>
-            <div class="containerOpt_card">
-                <h2 class="optTitleSection">Concat</h2>
+                <h2 class="optTitleSection">Delete</h2>
                 <div class="valueOptContainer">
                     <label for="valueConcat">Array</label>
                     <input type="text" placeholder="Type the array like this... 1,2,3,4" name="valueConcat" id="valueConcat">
                 </div>
             </div>
+            <!--Clear-->
             <div class="containerOpt_card">
-                <h2 class="optTitleSection">Reverse</h2>
+                <h2 class="optTitleSection">Clear</h2>
                 <div class="valueOptContainerButton">
                     <button class="buttonOpt" id="valueReverse">Execute</button>
                 </div>
             </div>
+            <!--Size-->
             <div class="containerOpt_card">
-                <h2 class="optTitleSection">Filter</h2>
-                <div class="valueOptContainer">
-                    <label for="valueFilter">Value</label>
-                    <input type="text" placeholder="Type the value to filter" name="valueFilter" id="valueFilter">
+                <h2 class="optTitleSection">Size</h2>
+                <div class="valueOptContainerButton">
+                    <button class="buttonOpt" id="valueShift">Run and print</button>
+                </div>
+            </div>
+            <!--Keys-->
+            <div class="containerOpt_card">
+                <h2 class="optTitleSection">Keys</h2>
+                <div class="valueOptContainerButton">
+                    <button class="buttonOpt" id="valueShift">Run and print</button>
+                </div>
+            </div>
+            <!--Values-->
+            <div class="containerOpt_card">
+                <h2 class="optTitleSection">Values</h2>
+                <div class="valueOptContainerButton">
+                    <button class="buttonOpt" id="valueShift">Run and print</button>
+                </div>
+            </div>
+            <!--Entries-->
+            <div class="containerOpt_card">
+                <h2 class="optTitleSection">Entries</h2>
+                <div class="valueOptContainerButton">
+                    <button class="buttonOpt" id="valueShift">Run and print</button>
                 </div>
             </div>
         </section>
