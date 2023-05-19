@@ -498,16 +498,16 @@ const contenido = {
             <div class="containerOpt_card">
                 <h2 class="optTitleSection">Has</h2>
                 <div class="valueOptContainer">
-                    <label for="valueShift">Value</label>
-                    <input type="text" placeholder="Type the value to shift" name="valueUnshift" id="valueUnshift">
+                    <label for="valueHashHas">Value</label>
+                    <input type="text" placeholder="Type the key to get the value" name="valueHashHas" id="valueHashHas">
                 </div>
             </div>
             <!--Delete-->
             <div class="containerOpt_card">
                 <h2 class="optTitleSection">Delete</h2>
                 <div class="valueOptContainer">
-                    <label for="valueConcat">Array</label>
-                    <input type="text" placeholder="Type the array like this... 1,2,3,4" name="valueConcat" id="valueConcat">
+                    <label for="valueHashDelete">Array</label>
+                    <input type="text" placeholder="Type the key to delete the value" name="valueHashDelete" id="valueHashDelete">
                 </div>
             </div>
             <!--Clear-->
@@ -528,14 +528,14 @@ const contenido = {
             <div class="containerOpt_card">
                 <h2 class="optTitleSection">Keys</h2>
                 <div class="valueOptContainerButton">
-                    <button class="buttonOpt" id="valueShift">Run and print</button>
+                    <button class="buttonOpt" id="valueHashKeys">Run and print</button>
                 </div>
             </div>
             <!--Values-->
             <div class="containerOpt_card">
                 <h2 class="optTitleSection">Values</h2>
                 <div class="valueOptContainerButton">
-                    <button class="buttonOpt" id="valueShift">Run and print</button>
+                    <button class="buttonOpt" id="valueHashValues">Run and print</button>
                 </div>
             </div>
             <!--Entries-->

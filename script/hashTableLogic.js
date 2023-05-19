@@ -41,16 +41,89 @@ function getElement(value){
 }
 
 //has
+let valueHashHas = myTab.shadowRoot.getElementById('valueHashHas');
+valueHashHas.addEventListener('keydown', (event) => {
+    if(event.key === 'Enter'){
+        event.preventDefault();
+
+        if(event.target.value != null && hashTable.size > 0){
+            hasElement(event.target.value);
+        }
+    }
+});
+
+function hasElement(value){
+    consoleContent.innerText += `
+        *Value exist = ${hashTable.has(value)}
+    `;
+}
 
 //delete
+let valueHashDelete = myTab.shadowRoot.getElementById('valueHashDelete');
+valueHashDelete.addEventListener('keydown', (event) => {
+    if(event.key === 'Enter'){
+        event.preventDefault();
+
+        if(event.target.value != null && hashTable.size > 0){
+            deleteElement(event.target.value);
+            printTable();
+        }
+    }
+});
+
+function deleteElement(value){
+    if(hashTable.has(value)){
+        hashTable.delete(value);
+        consoleContent.innerText += `
+            ---Value deleted succesfully
+            *New size = ${hashTable.size} 
+        `;
+    }else{
+        consoleContent.innerText += `
+            ---Value deleted failed
+            The key does'nt exist
+        `;
+    }
+    
+}
 
 //clear
 
 //size
 
 //keys
+let valueHashKeys = myTab.shadowRoot.getElementById('valueHashKeys');
+valueHashKeys.addEventListener('click', () => {
+    if(hashTable.size > 0){
+        keysPrint();
+    }
+});
+
+function keysPrint(){
+    for(let key of hashTable.keys()){
+        consoleContent.innerText += `
+            Keys:
+            *Key = ${key}
+        `;
+    }
+}
 
 //values
+let valueHashValues = myTab.shadowRoot.getElementById('valueHashValues');
+valueHashValues.addEventListener('click', () => {
+    if(hashTable.size > 0){
+        valuesPrint();
+    }
+});
+
+function valuesPrint(){
+    for(let valor of hashTable.values()){
+        consoleContent.innerText += `
+            Values:
+            *Value = ${valor}
+        `;
+    }
+}
 
 //entries
 let valueHashEntries = myTab.shadowRoot.getElementById('valueHashEntries');
