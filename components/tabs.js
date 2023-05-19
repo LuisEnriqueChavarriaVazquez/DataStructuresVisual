@@ -8,7 +8,7 @@ class tabs extends HTMLElement {
     
     //Este observador es para dar de alta los atributos que se espera tenga la etiqueta
     static get observedAttributes(){
-        return ['section1','section2','section3','section4','section5','section6','section7'];
+        return ['section1','section2','section3', 'section3_5','section4','section5','section6','section7'];
     }
 
     //Verifica que los atributos esten dentro de la etiqueta
@@ -28,6 +28,7 @@ class tabs extends HTMLElement {
                 <div class="activeTab">${this.section1}</div>
                 <div>${this.section2}</div>
                 <div>${this.section3}</div>
+                <div>${this.section3_5}</div>
                 <div>${this.section4}</div>
                 <div>${this.section5}</div>
                 <div>${this.section6}</div>
@@ -42,6 +43,9 @@ class tabs extends HTMLElement {
                 </section>
                 <section class="containerContent" style="display: none;" id="Linked_list">
                     ${contenido.Linked_list}
+                </section>
+                <section class="containerContent" style="display: none;" id="Double_linked_list">
+                    ${contenido.Double_linked_list}
                 </section>
                 <section class="containerContent" style="display: none;" id="Stacks">
                     ${contenido.Stacks}
@@ -71,11 +75,12 @@ class tabs extends HTMLElement {
 
                 :host .tabs{
                     display: grid;
-                    grid-template-columns: repeat(7,1fr);
+                    grid-template-columns: repeat(8,1fr);
                     grid-template-rows: auto;
                     align-items: flex-end;
                     justify-content: center;
                     height: 64px;
+                    width: auto;
                     color: #fff;
                     background-color: #041d2c;
                 }
@@ -94,6 +99,25 @@ class tabs extends HTMLElement {
                     font-weight: 700;
                     font-size: 1.1rem;
                     transition: all .1s ease-out;
+                }
+
+                @media (max-width: 1000px) {
+                    :host .tabs{
+                        justify-content: flex-start;
+                        width: auto;
+                        height: 54px;
+                        overflow-x: scroll;
+                    }
+
+                    :host .tabs div{
+                        width: 155px;
+                        height: 100%;
+                        font-size: .9rem;
+                    }
+
+                    :host .tabs .activeTab{
+                        font-size: 1rem;
+                    }
                 }
 
                 :host .containerContent{
@@ -124,6 +148,16 @@ class tabs extends HTMLElement {
                     align-items: center;
                 }
 
+                @media (max-width: 1000px) {
+                    .titleSection{
+                        font-size: 1.5rem;
+                    }
+
+                    .optTitleSection{
+                        font-size: 1.2rem;
+                    } 
+                }
+
                 .containerOpt{
                     display: grid;
                     grid-template-columns: repeat(2, 1fr);
@@ -132,6 +166,12 @@ class tabs extends HTMLElement {
 
                     width: 100%;
                     height: auto;
+                }
+
+                @media (max-width: 1000px) {
+                    .containerOpt{
+                        grid-template-columns: 1fr;
+                    }
                 }
 
                 .containerOpt_card{
@@ -144,9 +184,9 @@ class tabs extends HTMLElement {
                     color: #0e2e42;
                 }
 
-                .containerOpt_card:last-child {
+                /*.containerOpt_card:last-child {
                     grid-column: span 2;
-                }
+                }*/
 
                 .valueOptContainer{
                     display: grid;
@@ -165,6 +205,9 @@ class tabs extends HTMLElement {
 
                 label{
                     font-size: 1.1rem;
+                    height: 100%;
+                    justify-content: center;
+                    align-items: center;
                 }
 
                 input[type="text"]{
@@ -175,6 +218,18 @@ class tabs extends HTMLElement {
                     background-color: rgb(202, 202, 202);
                     font-size: 1rem;
                     margin-bottom: 12px;
+                }
+
+                @media (max-width: 600px) {
+                    label{
+                        font-size: .9rem;
+                    }
+
+                    input[type="text"]{
+                        padding: 5px 8px;
+                        width: 100%;
+                        font-size: .9rem;
+                    }
                 }
 
                 .buttonOpt{
@@ -307,6 +362,74 @@ class tabs extends HTMLElement {
                     display: flex;
                     justify-content: flex-start;
                 }
+
+                /*Creación del estilo de las lista*/
+                .contenedorListasSimples{
+                    display: grid;
+                    grid-auto-flow: column;
+                    grid-template-columns: repeat(auto-fill, 1fr);
+                    grid-template-rows: 200px;
+                    margin: 20px;
+                    width: 100%;
+                    overflow-x: scroll;
+                }
+
+                .nodoListaSimple{
+                    display: grid;
+                    grid-template-columns: auto 60px;
+                    grid-template-rows: auto;
+                    gap: 10px;
+                }
+
+                .nodoListaDatos{
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    grid-row: repeat(3, auto);
+                }
+
+                @media (max-width: 1200px) {
+                    .nodoListaDatos{
+                        grid-template-columns: 100px;
+                    }
+                }
+
+                .nodoListaDatos span{
+                    width: 100%;
+                    height: auto;
+                    background-color: #1d5f88;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 1.1rem;
+                    padding: 0 30px;
+                }
+
+                .nodoListaDatos span:first-child{
+                    border-radius: 20px 20px 0 0;
+                    background-color: #164b6b;
+                    font-weight: 700;
+                }
+
+                .nodoListaDatos span:last-child{
+                    border-radius: 0 0 20px 20px;
+                    background-color: #164b6b;
+                    font-weight: 600;
+                }
+
+                .nodoListaPointer{
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    grid-row: repeat(3, auto);
+                }
+
+                .nodoListaPointer span{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 1.5rem;
+                }
+
+                .
             </style>
         `;
     }
@@ -364,7 +487,7 @@ function clickTabActive(divs){
 
 function actualizarContenido(container, divClicked){
     //Obtenemos el contenido del objeto
-    let nombreTab = divClicked.outerText.replace(' ', '_');
+    let nombreTab = divClicked.outerText.replaceAll(' ', '_');
     console.log('nombreTab: ', nombreTab);
     
     //Accedemos a los hijos del contenedor para desaparecer todos los subcontenedores
@@ -550,7 +673,63 @@ const contenido = {
     `,
     Linked_list:`
         <h1 class="titleSection">Linked list</h1>
+        <section class="contenedorListasSimples" id="contenedorListasSimplesID">
+            
+        </section>
 
+        <h1 class="titleSection">Options</h1>
+        <section class="containerOpt">
+            <!--Append-->
+            <div class="containerOpt_card">
+                <h2 class="optTitleSection">Append</h2>
+                <div class="valueOptContainer">
+                    <label for="valueSimplyListAppend">Value</label>
+                    <input type="text" placeholder="Type the value to append" name="valueSimplyListAppend" id="valueSimplyListAppend">
+                </div>
+            </div>
+            <!--Preprend-->
+            <div class="containerOpt_card">
+                <h2 class="optTitleSection">Prepend</h2>
+                <div class="valueOptContainer">
+                    <label for="valueSimplyListPrepend">Value</label>
+                    <input type="text" placeholder="Type the key to get the value" name="valueSimplyListPrepend" id="valueSimplyListPrepend">
+                </div>
+            </div>
+            <!--Insert-->
+            <div class="containerOpt_card">
+                <h2 class="optTitleSection">Get</h2>
+                <div class="valueOptContainer">
+                    <label for="valueHashGet">Value</label>
+                    <input type="text" placeholder="Type the key to get the value" name="valueHashGet" id="valueHashGet">
+                </div>
+            </div>
+            <!--delete-->
+            <div class="containerOpt_card">
+                <h2 class="optTitleSection">Has</h2>
+                <div class="valueOptContainer">
+                    <label for="valueHashHas">Value</label>
+                    <input type="text" placeholder="Type the key to get the value" name="valueHashHas" id="valueHashHas">
+                </div>
+            </div>
+            <!--delete tail-->
+            <div class="containerOpt_card">
+                <h2 class="optTitleSection">Entries</h2>
+                <div class="valueOptContainerButton">
+                    <button class="buttonOpt" id="valueHashEntries">Run and print</button>
+                </div>
+            </div>
+            <!--delete head-->
+            <div class="containerOpt_card">
+                <h2 class="optTitleSection">Entries</h2>
+                <div class="valueOptContainerButton">
+                    <button class="buttonOpt" id="valueHashEntries">Run and print</button>
+                </div>
+            </div>
+        </section>
+
+    `,
+    Double_linked_list:`
+        <h1 class="titleSection">Double linked list</h1>
     `,
     Stacks:`
         <h1 class="titleSection">Stacks</h1>
