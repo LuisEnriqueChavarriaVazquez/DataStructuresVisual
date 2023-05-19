@@ -293,13 +293,19 @@ class tabs extends HTMLElement {
                     border-radius: 20px;
                     font-family: Consolas;
                     background-color: #222222;
-                    color: #00ccff;
-                    min-height: 200px;
-                    height: auto;
+                    color: #66ff00;
+                    height: 200px;
                     width: 100%;
-                    padding: 20px;
                     margin-bottom: 20px;
                     box-sizing: border-box;
+                }
+                
+                #consoleText{
+                    height: 200px;
+                    overflow-y: scroll;
+                    padding: 15px 20px;
+                    display: flex;
+                    justify-content: flex-start;
                 }
             </style>
         `;
@@ -473,7 +479,7 @@ const contenido = {
                     <label for="valueHashSet">Value</label>
                     <input type="text" placeholder="Type the value to set" name="valueHashSet" id="valueHashSet">
                     <label for="keyHashSet">Key</label>
-                    <input type="text" placeholder="Type the key to push" name="keyHashSet" id="keyHashSet">
+                    <input type="text" placeholder="Type the key to set" name="keyHashSet" id="keyHashSet">
                 </div>
                 <div class="valueOptContainerButton">
                     <button class="buttonOpt" id="setHashButton">Set</button>
@@ -483,8 +489,9 @@ const contenido = {
             <div class="containerOpt_card">
                 <h2 class="optTitleSection">Get</h2>
                 <br><br><br><br>
-                <div class="valueOptContainerButton">
-                    <button class="buttonOpt" id="valuePop">Execute</button>
+                <div class="valueOptContainer">
+                    <label for="valueHashGet">Value</label>
+                    <input type="text" placeholder="Type the key to get the value" name="valueHashGet" id="valueHashGet">
                 </div>
             </div>
             <!--Has-->
@@ -535,7 +542,7 @@ const contenido = {
             <div class="containerOpt_card">
                 <h2 class="optTitleSection">Entries</h2>
                 <div class="valueOptContainerButton">
-                    <button class="buttonOpt" id="valueShift">Run and print</button>
+                    <button class="buttonOpt" id="valueHashEntries">Run and print</button>
                 </div>
             </div>
         </section>

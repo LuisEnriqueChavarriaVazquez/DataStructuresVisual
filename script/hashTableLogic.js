@@ -1,4 +1,5 @@
 let valoresTable =  myTab.shadowRoot.getElementById('valoresTableContentHead');
+let consoleContent = myTab.shadowRoot.getElementById('consoleText');
 
 //Definimos nuestro hash
 let hashTable = new Map();
@@ -22,6 +23,22 @@ function setElement(key,value){
 
 
 //get
+let valueHashGet = myTab.shadowRoot.getElementById('valueHashGet');
+valueHashGet.addEventListener('keydown', (event) => {
+    if(event.key === 'Enter'){
+        event.preventDefault();
+
+        if(event.target.value != null && hashTable.size > 0){
+            getElement(event.target.value);
+        }
+    }
+});
+
+function getElement(value){
+    consoleContent.innerText += `
+        *Gotten value = ${hashTable.get(value)}
+    `;
+}
 
 //has
 
@@ -36,6 +53,23 @@ function setElement(key,value){
 //values
 
 //entries
+let valueHashEntries = myTab.shadowRoot.getElementById('valueHashEntries');
+valueHashEntries.addEventListener('click', () => {
+    if(hashTable.size > 0){
+        entriesPrint();
+    }
+});
+
+function entriesPrint(){
+    for(let [clave, valor] of hashTable){
+        consoleContent.innerText += `
+            Entries:
+            *Key = ${clave}
+            *Value = ${valor}
+
+        `;
+    }
+};
 
 //Impresión de la tabla
 function printTable(){
