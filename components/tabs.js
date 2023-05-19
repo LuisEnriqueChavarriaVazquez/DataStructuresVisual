@@ -514,14 +514,14 @@ const contenido = {
             <div class="containerOpt_card">
                 <h2 class="optTitleSection">Clear</h2>
                 <div class="valueOptContainerButton">
-                    <button class="buttonOpt" id="valueReverse">Execute</button>
+                    <button class="buttonOpt" id="valueHashClear">Clear all</button>
                 </div>
             </div>
             <!--Size-->
             <div class="containerOpt_card">
                 <h2 class="optTitleSection">Size</h2>
                 <div class="valueOptContainerButton">
-                    <button class="buttonOpt" id="valueShift">Run and print</button>
+                    <button class="buttonOpt" id="valueHashSize">Run and print</button>
                 </div>
             </div>
             <!--Keys-->

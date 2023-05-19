@@ -88,8 +88,37 @@ function deleteElement(value){
 }
 
 //clear
+let valueHashClear = myTab.shadowRoot.getElementById('valueHashClear');
+valueHashClear.addEventListener('click', () => {
+    if(hashTable.size > 0){
+        clearHash();
+        printTable();
+    }else if(hashTable.size == 0){
+        consoleContent.innerText += `
+        Nothing to clear
+        `;
+    }
+});
+
+function clearHash(){
+    hashTable.clear();
+    consoleContent.innerText += `
+        *Cleared succesfully :)
+        Current size = ${hashTable.size}
+    `;
+}
 
 //size
+let valueHashSize = myTab.shadowRoot.getElementById('valueHashSize');
+valueHashSize.addEventListener('click', () => {
+    sizePrint();
+});
+
+function sizePrint(){
+    consoleContent.innerText += `
+        Current size = ${hashTable.size}
+    `;
+}
 
 //keys
 let valueHashKeys = myTab.shadowRoot.getElementById('valueHashKeys');
